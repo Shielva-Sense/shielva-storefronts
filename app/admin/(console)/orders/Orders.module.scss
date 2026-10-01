@@ -1,0 +1,5 @@
+.link { font-weight: 600; color: var(--color-text); text-decoration: none; &:hover, &:focus-visible { text-decoration: underline; } }
+.customer { display: grid; gap: 2px; }
+.muted { font-size: var(--text-xs); color: var(--color-text-muted); }
+.num { font-variant-numeric: tabular-nums; }
+.refunded { font-variant-numeric: tabular-nums; color: var(--color-danger); }

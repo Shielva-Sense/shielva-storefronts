@@ -1,0 +1,7 @@
+.timer {
+    display: flex;
+    gap: var(--space-3);
+    div { display: flex; flex-direction: column-reverse; align-items: center; min-width: 88px; padding: var(--space-3); border: 1px solid var(--color-border-strong); }
+    dd { font-family: var(--font-display); font-size: var(--text-4xl); line-height: 1; font-variant-numeric: tabular-nums; }
+    dt { font-size: var(--text-xs); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+}

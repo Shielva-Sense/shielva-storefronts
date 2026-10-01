@@ -1,0 +1,12 @@
+.garment {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / var(--ratio);
+    clip-path: var(--shape);
+    background:
+        repeating-linear-gradient(45deg, rgba(var(--color-white-rgb), 0.07) 0 2px, transparent 2px 5px),
+        repeating-linear-gradient(-45deg, rgba(var(--color-black-rgb), 0.06) 0 2px, transparent 2px 6px),
+        linear-gradient(100deg, rgba(var(--color-black-rgb), 0.18), transparent 35%, rgba(var(--color-white-rgb), 0.12) 60%, rgba(var(--color-black-rgb), 0.2)),
+        var(--fabric);
+    filter: drop-shadow(0 18px 24px rgba(var(--color-black-rgb), 0.25));
+}

@@ -1,0 +1,29 @@
+.btn {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--header-border, var(--color-border));
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: var(--radius-full);
+    background: var(--color-brand-700);
+    color: var(--color-on-brand);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    transition: transform var(--dur-base) var(--ease-spring);
+    &[data-empty="true"] { transform: scale(0); }
+}

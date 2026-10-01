@@ -1,0 +1,6 @@
+.link { font-weight: 600; color: var(--color-text); text-decoration: none; &:hover, &:focus-visible { text-decoration: underline; } }
+.muted { font-size: var(--text-xs); color: var(--color-text-muted); }
+.reason { display: block; max-width: 28ch; white-space: normal; }
+.lines { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: var(--text-xs); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.form { display: grid; gap: var(--space-4); }

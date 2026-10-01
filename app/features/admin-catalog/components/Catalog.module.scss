@@ -1,0 +1,76 @@
+.form { display: grid; gap: var(--space-4); }
+.formGrid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.fieldset { display: grid; gap: var(--space-3); margin: 0; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.legend { padding-inline: var(--space-1); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--text-xs); }
+
+/* Compact table-cell editor (descendant selector outranks the primitive's base control). */
+.inline { display: inline-block; width: 110px; input { min-height: 34px; padding: 6px 10px; } }
+
+.product { display: grid; gap: var(--space-3); padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); min-width: 0; }
+.productHead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.productTitle { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); h2 { font-size: var(--text-lg); font-weight: 600; } }
+.handle { font-size: var(--text-xs); color: var(--color-text-muted); }
+.productActions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.statusSelect { width: 150px; select { min-height: 36px; padding-block: 6px; } }
+.rule { font-size: var(--text-sm); color: var(--color-text-muted); }
+.sku { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--text-xs); }
+.muted { color: var(--color-text-muted); }
+.list { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+
+/* Create / edit forms */
+.subhead { font-size: var(--text-base); font-weight: 600; }
+.help { font-size: var(--text-xs); color: var(--color-text-subtle); }
+.error { font-size: var(--text-xs); color: var(--color-danger); }
+.rows { display: grid; gap: var(--space-3); }
+.rowActions { display: flex; justify-content: flex-end; }
+.checkGroup { display: grid; gap: var(--space-2); min-width: 0; margin: 0; padding: 0; border: 0; }
+.checkOptions { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+.addRow { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: var(--space-2); > button { margin-top: 22px; } }
+.knownTags { display: grid; gap: var(--space-2); }
+.knownList { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.knownItem { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--space-2); }
+
+/* Tag chips (card header + tags editor) */
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 2px var(--space-2);
+    font-size: var(--text-xs);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-bg-subtle);
+    color: var(--color-text);
+}
+.chipRemove {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    &:hover { color: var(--color-danger); }
+    &:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+}
+
+/* Color attributes */
+.colorRow { display: grid; grid-template-columns: auto 52px minmax(0, 1fr); align-items: center; gap: var(--space-2); }
+.colorPicker { padding: 4px; cursor: pointer; }
+.swatch {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-full);
+    background: var(--swatch, transparent);
+    border: 1px solid var(--color-border-strong);
+}
+.swatchLg { width: 32px; height: 32px; }
+.swatchEmpty { border-style: dashed; }
+.variantName { display: inline-flex; align-items: center; gap: var(--space-2); }

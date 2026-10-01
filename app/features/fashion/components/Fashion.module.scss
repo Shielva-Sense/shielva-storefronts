@@ -1,0 +1,211 @@
+// ATELIER NORD scroll signature: brutalist editorial — type splits apart,
+// horizontal travel, scroll-scrubbed data bars. Square corners, hard cuts.
+
+.h2 { font-family: var(--font-display); font-size: var(--text-4xl); text-transform: uppercase; line-height: 0.95; font-weight: 400; }
+.sub { max-width: 52ch; font-size: var(--text-lg); }
+
+/* ───────────── Hero ───────────── */
+.hero {
+    --hp: var(--p, 0.5);
+    --tp: var(--p, 0);
+    --btn-radius: 0;
+    position: relative;
+}
+:global([data-motion="full"]) .hero { height: 220vh; }
+.heroStage {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: var(--space-8);
+    min-height: var(--stage-h);
+    padding-block: var(--space-12);
+    overflow: hidden;
+}
+:global([data-motion="full"]) .heroStage { position: sticky; top: var(--header-h); height: var(--stage-h); padding-block: var(--space-6); }
+.wordmark {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    font-family: var(--font-display);
+    font-weight: 400;
+    // Sized against BOTH axes so two rows always fit inside the pinned stage.
+    font-size: min(clamp(3.5rem, 1rem + 12vw, 13rem), calc(var(--stage-h) * 0.26));
+    line-height: 0.88;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+.rowA { justify-self: start; padding-left: var(--gutter); transform: translate3d(calc(var(--tp) * -10vw), 0, 0); }
+.rowB {
+    justify-self: end;
+    padding-right: var(--gutter);
+    color: var(--color-rust);
+    transform: translate3d(calc(var(--tp) * 10vw), 0, 0);
+}
+.heroCoat {
+    position: absolute;
+    aspect-ratio: 2 / 3;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: min(26vw, calc(var(--stage-h) * 0.36));
+    min-width: 150px;
+    transform: translate3d(-50%, -58%, 0) scale(calc(0.85 + var(--hp) * 0.35)) rotate(calc(-8deg + var(--hp) * 8deg));
+}
+// Lite / reduced: no layering — coat sits in the flow between wordmark and copy.
+:global([data-motion="lite"]) .heroStage,
+:global([data-motion="reduced"]) .heroStage { min-height: 0; padding-block: var(--space-10); }
+:global([data-motion="lite"]) .heroCoat,
+:global([data-motion="reduced"]) .heroCoat {
+    position: relative;
+    left: auto;
+    top: auto;
+    justify-self: center;
+    width: min(46vw, 220px);
+    margin-top: calc(var(--space-8) * -1);
+    transform: rotate(-4deg);
+}
+.heroMeta {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    p { max-width: 34ch; font-size: var(--text-lg); }
+}
+
+/* ───────────── Lookbook ───────────── */
+.lookbook { background: var(--color-coal); color: var(--color-bone); --color-text-muted: rgba(var(--color-bone-rgb), 0.7); }
+:global([data-motion="full"]) .lookbook { height: 320vh; }
+.lookStage {
+    display: grid;
+    grid-template-columns: 100%;
+    align-content: center;
+    gap: var(--space-6);
+    padding-block: var(--section-y);
+    overflow: hidden;
+}
+:global([data-motion="full"]) .lookStage { position: sticky; top: var(--header-h); height: var(--stage-h); padding-block: var(--space-6); }
+.lookHead .h2 { font-size: var(--text-3xl); }
+.lookHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+.lookTrack {
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0 var(--gutter);
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+}
+:global([data-motion="full"]) .lookTrack {
+    width: max-content;
+    overflow: visible;
+    transform: translate3d(calc(var(--p, 0) * (100vw - 100%)), 0, 0);
+    will-change: transform;
+}
+.look {
+    position: relative;
+    flex: 0 0 auto;
+    width: min(86vw, 420px);
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: center;
+    background:
+        linear-gradient(180deg, transparent 60%, rgba(var(--color-black-rgb), 0.45)),
+        var(--look-bg);
+    color: var(--color-bone);
+}
+:global([data-motion="full"]) .look {
+    width: auto;
+    height: calc(var(--stage-h) - 220px);
+    aspect-ratio: 5 / 4;
+}
+.lookGarment { position: absolute; left: var(--gx); top: var(--gy); width: var(--gw); }
+.lookCaption {
+    position: absolute;
+    inset: auto var(--space-5) var(--space-5);
+    h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; text-transform: uppercase; }
+    p { font-size: var(--text-sm); opacity: 0.85; }
+}
+
+/* ───────────── True cost ───────────── */
+.cost { background: var(--color-bg-subtle); }
+.costGrid { display: grid; gap: var(--space-10); @media (min-width: 960px) { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
+.bars { display: grid; gap: var(--space-8); }
+.costList {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li { display: grid; grid-template-columns: 120px 1fr 90px; align-items: center; gap: var(--space-3); font-size: var(--text-sm); }
+}
+.costAmount { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.costBar, .compareBar {
+    display: block;
+    height: 14px;
+    background: rgba(var(--color-coal-rgb), 0.08);
+    span {
+        display: block;
+        height: 100%;
+        background: var(--color-coal);
+        transform-origin: left;
+        // Scroll-scrubbed: each bar fills in sequence as the section crosses the viewport.
+        transform: scaleX(calc(clamp(0, (var(--p, 1) - 0.15 - var(--i) * 0.03) * 3.5, 1) * var(--share)));
+    }
+}
+.costList li:last-child .costBar span { background: var(--color-rust); }
+.compare { display: grid; gap: var(--space-2); p { display: flex; justify-content: space-between; font-size: var(--text-sm); } strong { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; } }
+.compareBar { height: 28px; }
+.muted span { background: var(--color-stone); }
+
+/* ───────────── Shop grid ───────────── */
+.grid {
+    display: grid;
+    gap: var(--space-6) var(--space-4);
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    --btn-radius: 0;
+}
+.card { display: grid; gap: var(--space-3); scroll-margin-top: calc(var(--header-h) + 16px); }
+.cardArt {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    padding: 14%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+// "contain" fit: the silhouette's width is bounded by both the card's width and
+// its height ÷ aspect ratio, so tall and wide garments never crop.
+.cardArt { container-type: size; }
+.cardGarment { width: min(100cqw, calc(100cqh / var(--ratio))); transition: transform var(--dur-slow) var(--ease-out); }
+.card:hover .cardGarment { transform: translate3d(0, -6px, 0) scale(1.04); }
+.cardBody { display: flex; justify-content: space-between; gap: var(--space-3); }
+.cardName { font-size: var(--text-base); font-weight: 700; }
+.cardMeta { font-size: var(--text-xs); color: var(--color-text-muted); }
+.cardPrice { font-weight: 600; white-space: nowrap; }
+
+/* ───────────── Drop ───────────── */
+.drop {
+    padding-block: var(--section-y);
+    background: var(--color-coal);
+    color: var(--color-bone);
+    --color-text: var(--color-bone);
+    --color-text-rgb: var(--color-bone-rgb);
+    --color-text-muted: rgba(var(--color-bone-rgb), 0.7);
+    --color-border: rgba(var(--color-bone-rgb), 0.3);
+    --color-border-strong: rgba(var(--color-bone-rgb), 0.5);
+    --color-accent: var(--color-linen);
+    --field-bg: transparent;
+    --field-radius: 0;
+    --btn-radius: 0;
+}
+.dropGrid { display: grid; gap: var(--space-10); align-items: center; @media (min-width: 900px) { grid-template-columns: 1.2fr 1fr; } }

@@ -1,0 +1,83 @@
+.shell {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+}
+.header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    background: rgba(var(--color-bg-rgb), 0.82);
+    backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.08);
+}
+.headerInner {
+    display: grid;
+    min-height: var(--header-h);
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-4);
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding: 0 var(--gutter);
+    @media (min-width: 900px) { grid-template-columns: auto auto 1fr auto; }
+}
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    span { display: none; @media (min-width: 600px) { display: inline; } }
+}
+.brand {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    justify-self: center;
+    @media (min-width: 900px) { justify-self: start; }
+}
+.nav {
+    display: none;
+    @media (min-width: 900px) { display: block; }
+    ul { display: flex; gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
+    a {
+        position: relative;
+        font-size: var(--text-sm);
+        text-decoration: none;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -4px;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--dur-base) var(--ease-out);
+        }
+        &:hover::after { transform: scaleX(1); transform-origin: left; }
+    }
+}
+.actions { display: flex; align-items: center; gap: var(--space-2); justify-self: end; }
+.footer {
+    padding: var(--space-16) var(--gutter) var(--space-10);
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+.account {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: inherit;
+}

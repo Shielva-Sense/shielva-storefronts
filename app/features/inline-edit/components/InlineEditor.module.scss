@@ -1,0 +1,19 @@
+.bar {
+    position: fixed;
+    left: 50%;
+    bottom: var(--space-5);
+    z-index: var(--z-overlay);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    max-width: calc(100vw - var(--space-8));
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-50%);
+    font-family: var(--font-sans, inherit);
+}
+.status { margin: 0; font-size: var(--text-sm); color: var(--color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.link { font-size: var(--text-sm); color: var(--color-text-muted); padding-right: var(--space-3); }

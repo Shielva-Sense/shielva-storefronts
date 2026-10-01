@@ -1,0 +1,35 @@
+.body { display: grid; gap: var(--space-6); }
+.group { display: grid; gap: var(--space-4); }
+.heading { font-size: var(--text-base); font-weight: 600; }
+.links { display: grid; gap: var(--space-3); justify-items: start; }
+.linkRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    @media (min-width: 720px) { grid-template-columns: 1fr 1.4fr auto; align-items: end; }
+}
+.rowActions { display: flex; gap: var(--space-1); }
+.column {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+.columnHead { display: flex; flex-wrap: wrap; align-items: end; gap: var(--space-3); > :first-child { flex: 1 1 240px; } }
+.sectionRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+.sectionList { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }

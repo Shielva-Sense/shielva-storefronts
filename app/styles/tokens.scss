@@ -1,0 +1,71 @@
+:root {
+    // 4px grid
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
+    --section-y: clamp(64px, 10vw, 140px);
+    --gutter: clamp(16px, 4vw, 48px);
+    --max-w: 1280px;
+    --header-h: 66px;
+    // Height a pinned (sticky) scene may occupy: viewport minus the sticky header.
+    --stage-h: calc(100svh - var(--header-h));
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 28px;
+    --radius-full: 9999px;
+
+    // Fluid type scale
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+    --text-3xl: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+    --text-4xl: clamp(2.5rem, 1.5rem + 4.5vw, 5.5rem);
+    --text-5xl: clamp(3rem, 1.2rem + 8vw, 9rem);
+
+    --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: var(--font-sans);
+
+    --shadow-sm: 0 1px 2px rgba(var(--color-black-rgb), 0.06);
+    --shadow-md: 0 8px 24px -8px rgba(var(--color-black-rgb), 0.18);
+    --shadow-lg: 0 24px 60px -20px rgba(var(--color-black-rgb), 0.35);
+
+    --z-base: 1;
+    --z-sticky: 20;
+    --z-header: 40;
+    --z-overlay: 80;
+    --z-toast: 100;
+
+    // Motion
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --dur-fast: 160ms;
+    --dur-base: 420ms;
+    --dur-slow: 900ms;
+    --stagger: 70ms;
+}
+
+.theme-beauty {
+    --font-display: var(--font-fraunces), Georgia, serif;
+}
+.theme-salon {
+    --font-display: var(--font-cormorant), Georgia, serif;
+}
+.theme-fashion {
+    --font-display: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+}

@@ -1,0 +1,25 @@
+.grid {
+    display: grid;
+    gap: var(--space-4);
+    @media (min-width: 1100px) { grid-template-columns: 3fr 2fr; }
+}
+.strong { font-weight: 600; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--text-xs); color: var(--color-text-muted); }
+
+.funnel { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.step { display: grid; gap: var(--space-1); }
+.stepHead { display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--text-sm); }
+.stepValue { font-variant-numeric: tabular-nums; font-weight: 600; }
+.track { display: block; height: 10px; border-radius: var(--radius-full); background: var(--color-bg-subtle); overflow: hidden; }
+.fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-brand-500);
+    transform: scaleX(var(--fill, 0));
+    transform-origin: left center;
+    transition: transform var(--dur-slow) var(--ease-out);
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+}
+.stepHint { font-size: var(--text-xs); color: var(--color-text-muted); }
+.drop { color: var(--color-warning); font-weight: 600; }

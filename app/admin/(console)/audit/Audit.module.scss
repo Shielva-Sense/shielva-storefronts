@@ -1,0 +1,6 @@
+.filter { min-width: 200px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--text-xs); }
+.path { display: inline-block; max-width: 36ch; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+.muted { color: var(--color-text-muted); }
+.slow { color: var(--color-warning); font-weight: 600; }
+.num { font-variant-numeric: tabular-nums; }

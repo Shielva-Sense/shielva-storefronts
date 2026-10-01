@@ -1,0 +1,19 @@
+.page { display: grid; gap: var(--space-6); padding-block: var(--space-12) var(--space-20); }
+.head { display: grid; gap: var(--space-2); }
+.title { font-size: var(--text-4xl); max-width: 22ch; }
+.muted { color: var(--color-text-muted); font-size: var(--text-sm); }
+.meta { font-size: var(--text-xs); color: var(--color-text-subtle); }
+.list { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; @media (min-width: 800px) { grid-template-columns: repeat(2, 1fr); } }
+.card { display: grid; gap: var(--space-2); padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); text-decoration: none; }
+.cardTitle { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; }
+.article { max-width: 760px; }
+.crumbs { font-size: var(--text-sm); color: var(--color-text-muted); }
+.prose {
+    display: grid;
+    gap: var(--space-4);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    h2 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; margin-top: var(--space-4); }
+    ul, ol { padding-left: var(--space-6); }
+}
+.back { font-weight: 600; text-underline-offset: 4px; }

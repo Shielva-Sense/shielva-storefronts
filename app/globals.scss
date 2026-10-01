@@ -1,0 +1,80 @@
+@use "./styles/colors";
+@use "./styles/tokens";
+@use "./styles/common";
+@use "./styles/motion";
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+    overflow-x: clip;
+}
+h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+a { color: inherit; }
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+.skip-link {
+    position: fixed;
+    top: var(--space-3);
+    left: var(--space-3);
+    z-index: var(--z-toast);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: var(--radius-md);
+    transform: translateY(-200%);
+    transition: transform var(--dur-fast) var(--ease-out);
+    &:focus { transform: translateY(0); }
+}
+.visually-hidden {
+    position: absolute !important; /* override: must beat any component positioning for SR-only text */
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+main:focus { outline: none; }
+body.scroll-locked { overflow: hidden; }
+
+/* Inline editor (admins only): outline editable storefront text while editing. */
+[data-inline-editing="true"] [data-edit] {
+    /* currentColor: the text's own color always contrasts with its background (dark heroes too). */
+    outline: 1px dashed currentColor;
+    outline-offset: 2px;
+    border-radius: 2px;
+    cursor: text;
+    /* Revealed regardless of scroll position so every field can be reached. */
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+}
+[data-inline-editing="true"] [data-edit]:hover,
+[data-inline-editing="true"] [data-edit]:focus { outline-style: solid; outline-width: 2px; }
+[data-inline-editing="true"] [data-edit][data-edit-dirty] { outline-color: var(--color-warning); }
+[data-inline-editing="true"] [data-edit][data-edit-invalid] { outline-color: var(--color-danger); }
+[data-inline-editing="true"] [data-edit-media] {
+    outline: 2px dashed currentColor;
+    outline-offset: -6px;
+    cursor: copy;
+}

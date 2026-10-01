@@ -1,0 +1,5 @@
+.link { font-weight: 600; color: var(--color-text); text-decoration: none; &:hover, &:focus-visible { text-decoration: underline; } }
+.muted { color: var(--color-text-muted); }
+.num { font-variant-numeric: tabular-nums; }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.segmentFilter { min-width: 220px; }

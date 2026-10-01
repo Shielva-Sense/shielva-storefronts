@@ -1,0 +1,9 @@
+.box {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    &[data-ratio="fixed"] { aspect-ratio: var(--photo-ratio); }
+    &[data-ratio="fill"] { position: absolute; inset: 0; }
+}
+.img { object-fit: cover; }

@@ -1,0 +1,182 @@
+// SOLE owner of raw colour values. Everything else references these tokens.
+// Each storefront theme re-maps the semantic tokens (--color-bg, --color-text,
+// --color-brand-*) so shared primitives (Button, Field, Drawer) re-skin per ICP.
+
+:root {
+    // ── Neutrals (playbook / default theme) ──
+    --color-ink: #16130f;
+    --color-ink-rgb: 22, 19, 15;
+    --color-paper: #f5f2ec;
+    --color-paper-rgb: 245, 242, 236;
+    --color-white: #ffffff;
+    --color-white-rgb: 255, 255, 255;
+    --color-black-rgb: 0, 0, 0;
+
+    // ── Status ──
+    --color-success: #1f7a4d;
+    --color-warning: #a15c00;
+    --color-danger: #b42318;
+    --color-info: #2f5d7c;
+    --color-success-50: #e6f4ec;
+    --color-warning-50: #fdf1dc;
+    --color-danger-50: #fde8e6;
+    --color-info-50: #e5eef4;
+
+    // ── Semantic defaults ──
+    --color-bg: var(--color-paper);
+    --color-bg-rgb: var(--color-paper-rgb);
+    --color-surface: #fffdf9;
+    --color-bg-subtle: #ebe6dc;
+    --color-text: var(--color-ink);
+    --color-text-rgb: var(--color-ink-rgb);
+    --color-text-muted: #5a5248;
+    --color-text-subtle: #6e6559; // 5.1:1 on paper (AA)
+    --color-border: #ddd5c8;
+    --color-border-strong: #b9ae9f;
+    --color-brand-50: #fbf1e6;
+    --color-brand-100: #f3dcc3;
+    --color-brand-500: #a9531f; // 5.3:1 with white text (AA)
+    --color-brand-600: #86411a;
+    --color-brand-700: #6c3415;
+    --color-brand-rgb: 169, 83, 31;
+    --color-on-brand: #ffffff;
+    --color-accent: #2d4a3e;
+
+    // Playbook swatches (one per ICP storefront)
+    --pb-beauty: #5c1a3f;
+    --pb-salon: #8f5238;
+    --pb-fashion: #111111;
+}
+
+// ── VELOUR — makeup brand (Gen-Z / young millennial, social-proof driven) ──
+.theme-beauty {
+    --color-plum-900: #1e0a1a;
+    --color-plum-800: #2a0f24;
+    --color-plum-rgb: 42, 15, 36;
+    --color-rose-300: #f4a3b8;
+    --color-rose-500: #e8577e;
+    --color-rose-700: #b8325a;
+    --color-rose-800: #9c2549; // AA (5.7:1) on --color-blush
+    --color-rose-rgb: 232, 87, 126;
+    --color-blush: #f7d9dc;
+    --color-cream: #fff6f2;
+    --color-gold: #c9a36a;
+    --color-gold-rgb: 201, 163, 106;
+    --color-gold-dark: #8c6b3d;
+    --color-gold-light: #f0d9a8;
+    --color-plum-700: #3d1733;
+    --color-plum-600: #4a1c3e;
+    --color-cream-rgb: 255, 246, 242;
+
+    --color-bg: var(--color-cream);
+    --color-bg-rgb: 255, 246, 242;
+    --color-surface: #ffffff;
+    --color-bg-subtle: var(--color-blush);
+    --color-text: var(--color-plum-800);
+    --color-text-rgb: var(--color-plum-rgb);
+    --color-text-muted: #6b4a60;
+    --color-text-subtle: #7d5f72; // AA on cream
+    --color-border: #efd3da;
+    --color-border-strong: #d9a9b7;
+    --color-brand-50: #fdeef2;
+    --color-brand-100: var(--color-blush);
+    --color-brand-500: var(--color-plum-800);
+    --color-brand-600: var(--color-plum-900);
+    --color-brand-700: var(--color-rose-700);
+    --color-brand-rgb: var(--color-rose-rgb);
+    --color-on-brand: var(--color-cream);
+    --color-accent: var(--color-rose-700);
+
+    // Lip shades (product data references these by key)
+    --shade-nude-rose: #c98b86;
+    --shade-bare-honey: #b9805f;
+    --shade-cocoa-silk: #7c4a3a;
+    --shade-coral-fever: #e0654f;
+    --shade-velvet-berry: #7d1f45;
+    --shade-ruby-noir: #9b1b30;
+    --shade-mauve-muse: #a26a7f;
+    --shade-spice-route: #a4492f;
+    --shade-plum-night: #4e1838;
+
+    // Skin tones (shade finder)
+    --skin-fair: #f3d7c6;
+    --skin-light: #e6bea0;
+    --skin-medium: #c99474;
+    --skin-tan: #a86f4c;
+    --skin-deep: #7a4a31;
+    --skin-rich: #4b2c1d;
+
+    // Hero wash stops
+    --wash-a: var(--color-plum-800);
+    --wash-b: #5c1a3f;
+    --wash-c: var(--color-rose-500);
+}
+
+// ── MAISON NOOR — salon (time-poor professionals, local intent, booking-led) ──
+.theme-salon {
+    --color-ivory: #f6f1ea;
+    --color-espresso: #2b211b;
+    --color-espresso-rgb: 43, 33, 27;
+    --color-sage: #8a9a82;
+    --color-sage-100: #e4e8df;
+    --color-clay: #b8765a;
+    --color-clay-700: #8f5238;
+    --color-sand: #e9dccb;
+
+    --color-bg: var(--color-ivory);
+    --color-bg-rgb: 246, 241, 234;
+    --color-surface: #fffcf7;
+    --color-bg-subtle: var(--color-sand);
+    --color-text: var(--color-espresso);
+    --color-text-rgb: var(--color-espresso-rgb);
+    --color-text-muted: #5e5147;
+    --color-text-subtle: #74665a; // AA on ivory
+    --color-border: #e2d6c6;
+    --color-border-strong: #c3b19c;
+    --color-brand-50: #f5ece4;
+    --color-brand-100: var(--color-sand);
+    --color-brand-500: var(--color-espresso);
+    --color-brand-600: #1a130f;
+    --color-brand-700: var(--color-clay-700);
+    --color-brand-rgb: 184, 118, 90;
+    --color-on-brand: var(--color-ivory);
+    --color-accent: var(--color-clay-700);
+
+    --hair-before-a: #6b5445;
+    --hair-before-b: #4a3a30;
+    --hair-after-a: #c9955f;
+    --hair-after-b: #7a4b2b;
+}
+
+// ── ATELIER NORD — clothing (conscious millennials, fit + transparency) ──
+.theme-fashion {
+    --color-bone: #efede8;
+    --color-bone-rgb: 239, 237, 232;
+    --color-coal: #111111;
+    --color-coal-rgb: 17, 17, 17;
+    --color-rust: #a3461f;
+    --color-stone: #8c877d;
+    --color-linen: #d9d2c3;
+    --color-olive: #5b6146;
+    --color-denim: #3d4b5c;
+    --color-camel: #b48a5a;
+
+    --color-bg: var(--color-bone);
+    --color-bg-rgb: var(--color-bone-rgb);
+    --color-surface: #f8f7f4;
+    --color-bg-subtle: #e2dfd8;
+    --color-text: var(--color-coal);
+    --color-text-rgb: var(--color-coal-rgb);
+    --color-text-muted: #4d4a44;
+    --color-text-subtle: #6f6a61;
+    --color-border: #cfcac0;
+    --color-border-strong: #9d978b;
+    --color-brand-50: #f3e7e1;
+    --color-brand-100: #e8d3c8;
+    --color-brand-500: var(--color-coal);
+    --color-brand-600: #000000;
+    --color-brand-700: var(--color-rust);
+    --color-brand-rgb: 163, 70, 31;
+    --color-on-brand: var(--color-bone);
+    --color-accent: var(--color-rust);
+}
