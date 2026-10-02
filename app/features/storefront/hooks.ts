@@ -2,6 +2,7 @@
 
 import { useMutation, useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { toast } from "@/components/ui/Toast";
+import { openOutsideFrame } from "@/core/frame";
 import { queryKeys } from "@/core/query-keys";
 import { createCheckout, fetchCheckoutStatus, type CheckoutStatus } from "./api";
 import { CHECKOUT_STATUS_POLL_MS, PENDING_CHECKOUT_TTL_MS, pendingCheckoutKey } from "./constants";
@@ -13,9 +14,7 @@ export function useCheckout(store: StoreSlug, experiments: Record<string, "A" | 
         mutationFn: (lines: CheckoutLine[]) => createCheckout(store, lines, experiments),
         onSuccess: ({ checkoutId, checkoutUrl }) => {
             rememberPendingCheckout(store, checkoutId);
-            // Shopify's checkout refuses to be framed — inside a preview frame, open it in a new tab.
-            if (window.self !== window.top) window.open(checkoutUrl, "_blank", "noopener");
-            else window.location.assign(checkoutUrl);
+            openOutsideFrame(checkoutUrl);
         },
         onError: (err: Error) => toast.error(err.message),
     });

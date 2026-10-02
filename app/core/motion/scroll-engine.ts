@@ -27,6 +27,8 @@
  *   reduced — prefers-reduced-motion: no transforms at all.
  */
 
+import { isFramed } from "@/core/frame";
+
 export type MotionMode = "full" | "lite" | "reduced";
 
 interface ProgressTrack {
@@ -72,11 +74,16 @@ export class ScrollEngine {
         this.mode = resolveMotionMode();
         document.documentElement.dataset.motion = this.mode;
 
+        // Framed (portfolio preview): the implicit root is the TOP window, so a scaled / clipped
+        // frame can leave reveals unfired and the store blank. Measure against this document instead.
+        const ioRoot = isFramed() ? document : null;
         this.revealIO = new IntersectionObserver(this.onReveal, {
+            root: ioRoot,
             rootMargin: "0px 0px -8% 0px",
             threshold: 0.12,
         });
         this.visibilityIO = new IntersectionObserver(this.onVisibility, {
+            root: ioRoot,
             rootMargin: "25% 0px 25% 0px",
         });
 

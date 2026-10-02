@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { ChoiceGroup, type ChoiceOption } from "@/components/ui/ChoiceGroup";
 import { Field, Input, Select } from "@/components/ui/Field";
 import { BrandSpinner, ProgressOverlay } from "@/components/ui/ProgressOverlay";
+import { openOutsideFrame } from "@/core/frame";
 import { formatPrice } from "@/core/formatters";
 import { CATEGORY_LABEL } from "../constants";
 import { useAvailability, useBookingCatalog, useHoldBooking } from "../hooks";
@@ -65,7 +66,7 @@ export function BookingWidget({ initial }: { initial: BookingCatalog | null }): 
             {
                 onSuccess: (res) => {
                     // Deposit services pay on Shopify's hosted checkout; the paid webhook confirms the booking.
-                    if (res.checkoutUrl) window.location.assign(res.checkoutUrl);
+                    if (res.checkoutUrl) openOutsideFrame(res.checkoutUrl);
                     else setConfirmedAt(slotOptions.find((s) => s.value === slot)?.label ?? "");
                     setSlot(null);
                 },

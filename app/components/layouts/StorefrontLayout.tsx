@@ -9,7 +9,7 @@ import { CartDrawer } from "@/components/ui/CartDrawer";
 import { ConfirmHost } from "@/components/ui/ConfirmDialog";
 import { Toaster } from "@/components/ui/Toast";
 import { absoluteUrl, ROUTES } from "@/core/site";
-import { PageViewBeacon } from "@/features/storefront/Beacons";
+import { FrameReadyBeacon, PageViewBeacon } from "@/features/storefront/Beacons";
 import { CatalogProvider } from "@/features/storefront/CatalogContext";
 import { THEME_VALUE_RE, THEME_VARS } from "@/features/storefront/constants";
 import type { CatalogItem, StoreSlug } from "@/features/storefront/types";
@@ -77,6 +77,7 @@ export function StorefrontLayout({
                 <CartProvider store={theme} experiments={experiments}>
                     <MotionProvider />
                     <PageViewBeacon store={theme} />
+                    <FrameReadyBeacon />
                     {announcement}
                     <header className={styles.header}>
                         <div className={styles.headerInner}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { announceFrameReady } from "@/core/frame";
 import { trackEvent } from "./api";
 import type { StoreSlug } from "./types";
 
@@ -16,5 +17,13 @@ export function ExperimentBeacon({ store, sectionId, variant }: { store: StoreSl
     useEffect(() => {
         void trackEvent(store, "variant_exposure", { sectionId, variant });
     }, [store, sectionId, variant]);
+    return null;
+}
+
+/** Signals an embedding preview (portfolio) that the store rendered — it keeps its poster until then. */
+export function FrameReadyBeacon(): null {
+    useEffect(() => {
+        announceFrameReady();
+    }, []);
     return null;
 }
