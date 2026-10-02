@@ -140,4 +140,13 @@ test("Brand domains serve their store at the root", async ({ request }) => {
     expect(legacy.status()).toBe(308);
     expect(legacy.headers()["location"]).toMatch(/\/journal$/);
     expect((await request.get(`${brand}/admin/login`)).status()).toBe(404);
+
+    // Shopify theme redirect ("Continue shopping" → brand site); never on password / cart / checkout.
+    const script = await request.get("/shopify/theme-redirect.js?store=beauty");
+    expect(script.headers()["content-type"]).toContain("javascript");
+    const js = await script.text();
+    expect(js).toContain('"http://velour.localhost:3031"');
+    expect(js).toContain("designMode");
+    expect(js).toMatch(/password\|checkouts\|cart/);
+    expect((await request.get("/shopify/theme-redirect.js?store=nope")).status()).toBe(404);
 });
