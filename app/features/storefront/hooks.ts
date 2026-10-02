@@ -13,7 +13,9 @@ export function useCheckout(store: StoreSlug, experiments: Record<string, "A" | 
         mutationFn: (lines: CheckoutLine[]) => createCheckout(store, lines, experiments),
         onSuccess: ({ checkoutId, checkoutUrl }) => {
             rememberPendingCheckout(store, checkoutId);
-            window.location.assign(checkoutUrl);
+            // Shopify's checkout refuses to be framed — inside a preview frame, open it in a new tab.
+            if (window.self !== window.top) window.open(checkoutUrl, "_blank", "noopener");
+            else window.location.assign(checkoutUrl);
         },
         onError: (err: Error) => toast.error(err.message),
     });

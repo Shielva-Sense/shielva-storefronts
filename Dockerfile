@@ -12,7 +12,10 @@ ARG NEXT_PUBLIC_SITE_URL=https://storefront.shielva.ai
 ARG API_ORIGIN=http://storefronts-api.shielva.svc.cluster.local
 # Pages pre-rendered at build (the index) resolve store links to brand domains with this.
 ARG BRAND_HOSTS=
-ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL API_ORIGIN=$API_ORIGIN BRAND_HOSTS=$BRAND_HOSTS NEXT_TELEMETRY_DISABLED=1
+# Baked into next.config headers: who may frame the storefronts, and which host is the (never-framed) admin.
+ARG FRAME_ANCESTORS=
+ARG ADMIN_HOSTS=
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL API_ORIGIN=$API_ORIGIN BRAND_HOSTS=$BRAND_HOSTS FRAME_ANCESTORS=$FRAME_ANCESTORS ADMIN_HOSTS=$ADMIN_HOSTS NEXT_TELEMETRY_DISABLED=1
 RUN mkdir -p public && pnpm run build
 
 FROM node:22-alpine
