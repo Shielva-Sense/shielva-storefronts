@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SplitText } from "@/components/motion/SplitText";
 import { fraunces } from "@/core/fonts";
+import { storeHref } from "@/core/site";
 import { ADMIN_MODULES, COMMERCE_WORKFLOW, ICP_PROFILES, MOTION_MODES, REFERENCE_BRANDS, SEO_CHECKLIST } from "../constants";
 import styles from "./Playbook.module.scss";
 
@@ -43,7 +44,7 @@ export function PlaybookHub(): React.JSX.Element {
                 <section id="icps" className={`container ${styles.icps}`} aria-label="ICP storefronts">
                     {ICP_PROFILES.map((icp, i) => (
                         <article key={icp.id} className={styles.icp} data-reveal="rise" style={{ "--i": i, "--swatch": `var(${icp.swatch})` } as CSSProperties}>
-                            <Link href={icp.href} className={styles.icpHead}>
+                            <Link href={storeHref(icp.href)} className={styles.icpHead}>
                                 <span>
                                     <span className={styles.vertical}>{icp.vertical}</span>
                                     <span className={styles.brand}>{icp.brand}</span>

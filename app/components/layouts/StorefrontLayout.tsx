@@ -8,7 +8,7 @@ import { CartButton } from "@/components/ui/CartButton";
 import { CartDrawer } from "@/components/ui/CartDrawer";
 import { ConfirmHost } from "@/components/ui/ConfirmDialog";
 import { Toaster } from "@/components/ui/Toast";
-import { ROUTES } from "@/core/site";
+import { absoluteUrl, ROUTES } from "@/core/site";
 import { PageViewBeacon } from "@/features/storefront/Beacons";
 import { CatalogProvider } from "@/features/storefront/CatalogContext";
 import { THEME_VALUE_RE, THEME_VARS } from "@/features/storefront/constants";
@@ -80,7 +80,7 @@ export function StorefrontLayout({
                     {announcement}
                     <header className={styles.header}>
                         <div className={styles.headerInner}>
-                            <Link href={ROUTES.playbook} className={styles.back} aria-label="Back to the ICP playbook">
+                            <Link href={absoluteUrl(ROUTES.playbook)} className={styles.back} aria-label="Back to the ICP playbook">
                                 <ArrowLeft size={14} aria-hidden="true" />
                                 <span>Playbook</span>
                             </Link>

@@ -19,7 +19,13 @@ export function absoluteUrl(path: string): string {
     const host = match?.[1] ? hostForStore(match[1]) : null;
     if (host) {
         const rest = match?.[2] ?? "";
-        return new URL(rest.startsWith("/") ? rest : `/${rest}`, `https://${host}`).toString();
+        return new URL(rest.startsWith("/") ? rest : `/${rest}`, `${new URL(SITE_URL).protocol}//${host}`).toString();
     }
     return new URL(path, SITE_URL).toString();
+}
+
+/** Link to a store page: its brand domain when configured (velour.shielva.ai), else the path. */
+export function storeHref(path: string): string {
+    const match = /^\/([a-z]+)(?=[/#?]|$)/.exec(path);
+    return match?.[1] && hostForStore(match[1]) ? absoluteUrl(path) : path;
 }

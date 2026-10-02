@@ -110,7 +110,7 @@ test("Maison Noor: deposit booking is paid on Shopify and confirmed by webhook",
 
 test("Storefronts ship SEO essentials", async ({ page }) => {
     // VELOUR has a brand domain in the e2e stack, so its canonical is that domain's root.
-    for (const [path, type, canonical] of [["/beauty", "ItemList", /^https:\/\/velour\.localhost:3031\/?$/], ["/salon", "HairSalon", /\/salon$/], ["/fashion", "ItemList", /\/fashion$/]] as const) {
+    for (const [path, type, canonical] of [["/beauty", "ItemList", /^https?:\/\/velour\.localhost:3031\/?$/], ["/salon", "HairSalon", /\/salon$/], ["/fashion", "ItemList", /\/fashion$/]] as const) {
         await page.goto(path);
         await expect(page).toHaveTitle(/.{20,}/);
         await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", canonical);
