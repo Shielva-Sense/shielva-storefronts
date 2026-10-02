@@ -10,7 +10,9 @@ COPY . .
 # Inlined at build: public site URL (index) and the in-cluster API the /api/v1 rewrite proxies to.
 ARG NEXT_PUBLIC_SITE_URL=https://storefront.shielva.ai
 ARG API_ORIGIN=http://storefronts-api.shielva.svc.cluster.local
-ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL API_ORIGIN=$API_ORIGIN NEXT_TELEMETRY_DISABLED=1
+# Pages pre-rendered at build (the index) resolve store links to brand domains with this.
+ARG BRAND_HOSTS=
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL API_ORIGIN=$API_ORIGIN BRAND_HOSTS=$BRAND_HOSTS NEXT_TELEMETRY_DISABLED=1
 RUN mkdir -p public && pnpm run build
 
 FROM node:22-alpine
